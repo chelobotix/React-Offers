@@ -2,12 +2,10 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import MainSection from "../MainSection/MainSection";
 
-const Home = ({ data }) => {
+const Home = ({ campaigns }) => {
   return (
-    <div>
-      <Header />
-      <MainSection data={data} />
-      <Footer />
+    <div className="bg-slate-400 p-0 m-0">
+      <MainSection campaigns={campaigns} />
     </div>
   );
 };

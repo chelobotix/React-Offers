@@ -21,7 +21,7 @@ function App() {
     fetchData();
   }, []);
 
-  return <div>{isLoading ? <h1>Loading...</h1> : <Home data={data.campaigns} />}</div>;
+  return <div>{isLoading ? <h1>Loading...</h1> : <Home campaigns={data.campaigns} />}</div>;
 }
 
 export default App;
