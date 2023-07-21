@@ -19,6 +19,11 @@ const MainSection = ({ campaigns }) => {
     });
   };
 
+  const campaignCarrouselWidth = (arrayLength) => {
+    const total = arrayLength * 250 + 250;
+    return `${total}px`;
+  };
+
   useEffect(() => {
     console.log(videoState);
   }, []);
@@ -28,8 +33,8 @@ const MainSection = ({ campaigns }) => {
       <ul className="flex flex-col items-center">
         {campaigns.map((campaign, i) => {
           return (
-            <li key={uuidv4()} className="border-t-2 border-slate-200 w-11/12 mt-2">
-              <div className="flex items-center mt-2">
+            <li key={uuidv4()} className="border-t-2 border-slate-200 w-full mt-2">
+              <div className="flex items-center mt-2 p-3">
                 <img src={campaign.campaign_icon_url} alt="" className="w-2/6 rounded-3xl" />
                 <div className="pl-4">
                   <p className="text-5xl font-semibold">{campaign.campaign_name}</p>
@@ -40,11 +45,14 @@ const MainSection = ({ campaigns }) => {
                 </div>
               </div>
 
-              <div className="overflow-auto w-full bg-orange-400">
-                <ul className="">
+              <div className="overflow-x-scroll pl-4 w-[640px]">
+                <ul
+                  className="flex gap-1  bg-orange-400 w-[1000px] "
+                  style={{ width: campaignCarrouselWidth(campaign.medias.length) }}
+                >
                   {campaign.medias.map((media, j) => {
                     return (
-                      <li key={uuidv4()} className="w-[250px] min-w-[250-px] max-w-[250-px] h-[300px] bg-black">
+                      <li key={uuidv4()} className="w-[250px] min-w-[250px] max-w-[250px] h-[300px] bg-black">
                         {/* <img src={media.cover_photo_url} alt="" />
                         <img src={playArrow} alt="" /> */}
                         {pushVideo(media.download_url, i + 1, j)}
