@@ -28,8 +28,8 @@ const MainSection = ({ campaigns }) => {
       <ul className="flex flex-col items-center">
         {campaigns.map((campaign, i) => {
           return (
-            <li key={uuidv4()} className="border-t-2 border-slate-200 m-2">
-              <div className="flex items-center m-2">
+            <li key={uuidv4()} className="border-t-2 border-slate-200 w-11/12 mt-2">
+              <div className="flex items-center mt-2">
                 <img src={campaign.campaign_icon_url} alt="" className="w-2/6 rounded-3xl" />
                 <div className="pl-4">
                   <p className="text-5xl font-semibold">{campaign.campaign_name}</p>
@@ -40,13 +40,13 @@ const MainSection = ({ campaigns }) => {
                 </div>
               </div>
 
-              <div className="overflow-auto w-[900px]">
-                <ul className="flex">
+              <div className="overflow-auto w-full bg-orange-400">
+                <ul className="">
                   {campaign.medias.map((media, j) => {
                     return (
-                      <li key={uuidv4()} className="w-[400px] h-[800px]">
-                        <img src={media.cover_photo_url} alt="" />
-                        <img src={playArrow} alt="" />
+                      <li key={uuidv4()} className="w-[250px] min-w-[250-px] max-w-[250-px] h-[300px] bg-black">
+                        {/* <img src={media.cover_photo_url} alt="" />
+                        <img src={playArrow} alt="" /> */}
                         {pushVideo(media.download_url, i + 1, j)}
                         <div>
                           <img src={link} alt="" />
