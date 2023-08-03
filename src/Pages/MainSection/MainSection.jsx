@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
+import { useImageSize } from "react-image-size";
 import link from "@/assets/images/link.png";
 import download from "@/assets/images/download.png";
 import playArrow from "@/assets/images/play.png";
@@ -11,7 +12,6 @@ const MainSection = ({ campaigns }) => {
     actualVideo: "",
   });
   const videoState = [];
-
   const pushVideo = (url, app, video) => {
     videoState.push({
       app: app,
@@ -25,15 +25,10 @@ const MainSection = ({ campaigns }) => {
     return `${total}px`;
   };
 
-  const flipVertically = (event) => {
-    const { naturalWidth, naturalHeight } = event.target;
-    if (naturalWidth > naturalHeight) {
-      console.log(event.target);
-      event.target.classList.add("rotate-90");
-    }
-  };
+  // detectCoverPhotos();
+
   useEffect(() => {
-    console.log(videoState);
+    // console.log(videoState);
   }, []);
 
   return (
@@ -61,7 +56,7 @@ const MainSection = ({ campaigns }) => {
                   {campaign.medias.map((media, j) => {
                     return (
                       <li key={uuidv4()} className="w-[250px] min-w-[250px] max-w-[250px] h-[550px] bg-black">
-                        <img src={media.cover_photo_url} alt="" onLoad={flipVertically} cla />
+                        <img src={"dff"} alt="image_cover" />
                         <img src={playArrow} alt="" />
                         {pushVideo(media.download_url, i + 1, j)}
                         <div>
