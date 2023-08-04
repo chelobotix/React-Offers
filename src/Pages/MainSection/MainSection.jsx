@@ -1,8 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
+import { useImageSize } from "react-image-size";
 import link from "@/assets/images/link.png";
 import download from "@/assets/images/download.png";
 import playArrow from "@/assets/images/play.png";
+import style from "./MainSection.module.css";
 
 const MainSection = ({ campaigns }) => {
   const [isPlaying, setIsPlaying] = useState({
@@ -10,7 +12,6 @@ const MainSection = ({ campaigns }) => {
     actualVideo: "",
   });
   const videoState = [];
-
   const pushVideo = (url, app, video) => {
     videoState.push({
       app: app,
@@ -24,8 +25,10 @@ const MainSection = ({ campaigns }) => {
     return `${total}px`;
   };
 
+  // detectCoverPhotos();
+
   useEffect(() => {
-    console.log(videoState);
+    // console.log(videoState);
   }, []);
 
   return (
@@ -35,7 +38,7 @@ const MainSection = ({ campaigns }) => {
           return (
             <li key={uuidv4()} className="border-t-2 border-slate-200 w-full mt-2">
               <div className="flex items-center mt-2 p-3">
-                <img src={campaign.campaign_icon_url} alt="" className="w-2/6 rounded-3xl" />
+                <img src={campaign.campaign_icon_url} alt="" className="w-40 rounded-3xl" />
                 <div className="pl-4">
                   <p className="text-5xl font-semibold">{campaign.campaign_name}</p>
                   <p className="text-4xl font-semibold text-green-600">
@@ -45,16 +48,16 @@ const MainSection = ({ campaigns }) => {
                 </div>
               </div>
 
-              <div className="overflow-x-scroll pl-4 w-[640px]">
+              <div className={`${style.customScroll} overflow-x-scroll overflow-y-hidden scr pl-4 w-[640px]`}>
                 <ul
                   className="flex gap-1  bg-orange-400 w-[1000px] "
                   style={{ width: campaignCarrouselWidth(campaign.medias.length) }}
                 >
                   {campaign.medias.map((media, j) => {
                     return (
-                      <li key={uuidv4()} className="w-[250px] min-w-[250px] max-w-[250px] h-[300px] bg-black">
-                        {/* <img src={media.cover_photo_url} alt="" />
-                        <img src={playArrow} alt="" /> */}
+                      <li key={uuidv4()} className="w-[250px] min-w-[250px] max-w-[250px] h-[550px] bg-black">
+                        <img src={"dff"} alt="image_cover" />
+                        <img src={playArrow} alt="" />
                         {pushVideo(media.download_url, i + 1, j)}
                         <div>
                           <img src={link} alt="" />
